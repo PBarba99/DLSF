@@ -7,6 +7,7 @@ import org.cloudbus.cloudsim.examples.power.Helper;
 import org.cloudbus.cloudsim.examples.power.RunnerAbstract;
 import org.cloudbus.cloudsim.power.*;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -348,9 +349,10 @@ public class DeepRLRunner extends RunnerAbstract {
     public static void main(String[] args) throws IOException {
         boolean enableOutput = true;
         boolean outputToFile = false;
-        String inputFolder = "modules\\cloudsim-examples\\src\\main\\java\\workload\\bitbrain";//DeepRLRunner.class.getClassLoader().getResource("workload/bitbrain").getPath();
+        String sep = File.separator;
+        String inputFolder = "modules"+sep+"cloudsim-examples"+sep+"src"+sep+"main"+sep+"java"+sep+"workload"+sep+"bitbrain";//DeepRLRunner.class.getClassLoader().getResource("workload/bitbrain").getPath();
         String outputFolder = "output";
-        String workload = "fastStorage\\2013-8"; // Random workload
+        String workload = "fastStorage"+sep+"2013-8"; // Random workload
         String vmAllocationPolicy =  "lr"; // Local Regression (LR) VM allocation policy
         String vmSelectionPolicy = "mmt"; // Minimum Migration Time (MMT) VM selection policy
         String parameter = "200"; // the safety parameter of the LR policy

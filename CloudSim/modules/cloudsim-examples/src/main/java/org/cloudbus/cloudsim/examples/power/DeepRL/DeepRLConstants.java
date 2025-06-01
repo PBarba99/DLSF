@@ -2,6 +2,7 @@ package org.cloudbus.cloudsim.examples.power.DeepRL;
 
 import org.cloudbus.cloudsim.power.models.PowerModel;
 import org.cloudbus.cloudsim.power.models.PowerModelSpecPowerDellPowerEdgeC6320;
+import java.io.File;
 
 /**
  * @author Shreshth Tuli
@@ -10,7 +11,8 @@ import org.cloudbus.cloudsim.power.models.PowerModelSpecPowerDellPowerEdgeC6320;
 
 public class DeepRLConstants {
 
-    public final static String pythonCode = "../Deep-Learning/DeepRL.py";
+    public static String sep = File.separator;
+    public final static String pythonCode = ".."+sep+"Deep-Learning"+sep+"DeepRL.py";
 
     public final static String pythonClass = "DeepRL";
 
