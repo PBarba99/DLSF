@@ -353,8 +353,8 @@ public class DeepRLRunner extends RunnerAbstract {
         String inputFolder = "modules"+sep+"cloudsim-examples"+sep+"src"+sep+"main"+sep+"java"+sep+"workload"+sep+"bitbrain";//DeepRLRunner.class.getClassLoader().getResource("workload/bitbrain").getPath();
         String outputFolder = "output";
         String workload = "fastStorage"+sep+"2013-8"; // Random workload
-        String vmAllocationPolicy =  "lr"; // Local Regression (LR) VM allocation policy
-        String vmSelectionPolicy = "mmt"; // Minimum Migration Time (MMT) VM selection policy
+        String vmAllocationPolicy =  "deepRL-alloc"; // Local Regression (LR) VM allocation policy
+        String vmSelectionPolicy = "deepRL-sel"; // Minimum Migration Time (MMT) VM selection policy
         String parameter = "200"; // the safety parameter of the LR policy
         dynamic = true; // Dynamic or static simulation (Change the cloudlet lengths accordingly)
 
