@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run the DeepRL simulation with proper classpath
+# Run the DeepRL simulation with the proper classpath
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR/CloudSim" || exit 1
