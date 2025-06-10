@@ -8,6 +8,7 @@ import org.cloudbus.cloudsim.plus.util.CustomLog;
 import org.cloudbus.cloudsim.util.MathUtil;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
@@ -91,13 +92,29 @@ public class DRLDatacenter extends PowerDatacenter {
         this.broker = broker;
         this.hostEnergy = new double[this.getHostList().size()];
         try{
-            ProcessBuilder pb = new ProcessBuilder("python",execFile);
+            ProcessBuilder pb = new ProcessBuilder("C:/Users/pablo/anaconda3/envs/tensorflow/python",execFile);
             pythonProc = pb.start();
+
         }
         catch(Exception e){System.out.println(e.getMessage());}
-        System.out.println("Ran python code : " + execFile);
+        new Thread(() -> {
+            try (BufferedReader err = new BufferedReader(
+                    new InputStreamReader(pythonProc.getErrorStream()))) {
+                String line;
+                while ((line = err.readLine()) != null) {
+                    System.err.println("PYTHON ERR: " + line);
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading Python stderr: " + e.getMessage());
+            }
+        }).start();
+
+        System.out.println("Ran DLRDatacenter constructor and python code: " + execFile);
         toPython = new PrintStream(pythonProc.getOutputStream());
         fromPython = new BufferedReader(new InputStreamReader(pythonProc.getInputStream(), Charset.defaultCharset()));
+        System.out.println("Process started: " + pythonProc.isAlive());
+
+        System.out.println("Process started: " + pythonProc.isAlive());
     }
 
     protected void updateDLModel(){

@@ -12,7 +12,7 @@ import java.io.File;
 public class DeepRLConstants {
 
     public static String sep = File.separator;
-    public final static String pythonCode = ".."+sep+"Deep-Learning"+sep+"DeepRL.py";
+    public final static String pythonCode = "C:\\Users\\pablo\\OneDrive\\Documentos\\GitHub\\DLSF\\Deep-Learning\\DeepRL.py";
 
     public final static String pythonClass = "DeepRL";
 

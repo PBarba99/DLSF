@@ -162,8 +162,7 @@ class DeepRL(nn.Module):
 			loss_value = 5000*data[6] + data[8]/10000 + data[9]/100
 			loss_value = torch.Tensor(np.array(loss_value)).type(torch.FloatTensor)
 
-			loss = self.output[0].min()
-			loss.data = loss_value
+			loss = loss_value.clone().detach().requires_grad_(True)
 
 			# plt.imshow(vmMap,cmap='gray')
 			# plt.savefig(PATH + 'sendMap.jpg')
@@ -173,7 +172,7 @@ class DeepRL(nn.Module):
 			# file.write(str(vmMap))
 			# file.close()
 			index += 1
-			loss /= len(data)
+			loss = loss / len(data)
 			total_loss += loss
 		
 		total_loss /= len(data_input)
@@ -229,7 +228,8 @@ class DeepRL(nn.Module):
 		# file = open('output.pickle','rb')
 		# self.output = pickle.load(file)
 
-		host_list = self.output[-1].data[vm]
+		host_list_tensor = self.output[-1].data[vm]
+		host_list= host_list_tensor.numpy()
 		# print(host_list)
 		indices = np.flip(np.argsort(host_list))
 		# print(indices)
